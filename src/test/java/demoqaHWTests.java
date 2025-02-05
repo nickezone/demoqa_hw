@@ -51,6 +51,7 @@ public class demoqaHWTests {
 
         $(".modal-content").should(appear);
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+//        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").shouldHave(text("Alex"), text("0123456789"), text("29 May,2001"), text("Miami"));
     }
 }
