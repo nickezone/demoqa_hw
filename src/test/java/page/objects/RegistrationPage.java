@@ -1,7 +1,5 @@
-package Pages;
+package page.objects;
 
-import Pages.components.CalendarComponent;
-import Pages.components.RegistrationResultModal;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 
@@ -11,8 +9,8 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationPage {
-    CalendarComponent calendarComponent = new CalendarComponent();
-    RegistrationResultModal registrationResultModal = new RegistrationResultModal();
+    page.components.CalendarComponent calendarComponent = new page.components.CalendarComponent();
+    page.components.RegistrationResultModal registrationResultModal = new page.components.RegistrationResultModal();
 
     private final static String TITLE_TEXT = "Student Registration Form";
     private final SelenideElement

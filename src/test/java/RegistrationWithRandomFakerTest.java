@@ -1,19 +1,19 @@
-import Pages.RegistrationPage;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
+import page.objects.RegistrationPage;
 
 import java.util.Locale;
 
-import static utils.RandomUtils.*;
+import static utils.RandomUtils.getRandomInt;
+import static utils.RandomUtils.getRandomItemFromArray;
 
 public class RegistrationWithRandomFakerTest extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
     String[] genders = {"Male", "Female", "Other"},
-    subjects = {"Maths", "Chemistry", "Physics", "Arts", "Social Studies"},
-    hobbies = {"Sport", "Reading", "Music"},
-    states = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"},
-    months = {"May", "July", "March"};
+            subjects = {"Maths", "Chemistry", "Physics", "Arts", "Social Studies"},
+            hobbies = {"Sports", "Reading", "Music"},
+            states = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
 
     @Test
     void successFillTest() {
@@ -53,6 +53,10 @@ public class RegistrationWithRandomFakerTest extends TestBase {
 
         registrationPage.verifyResultModalAppears()
                 .verifyResult("Student Name", userName + " " + userLastName)
-                .verifyResult("Gender", userGender);
+                .verifyResult("Gender", userGender)
+                .verifyResult("Mobile", userPhone)
+                .verifyResult("Hobbies", userHobby)
+                .verifyResult("Address", userAddress)
+                .verifyResult("State and City", userState + " " + userCity);
     }
 }

@@ -1,5 +1,5 @@
 import org.junit.jupiter.api.Test;
-import Pages.RegistrationPage;
+import page.objects.RegistrationPage;
 
 public class DemoqaHWTests extends TestBase {
 

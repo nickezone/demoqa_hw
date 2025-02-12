@@ -1,5 +1,6 @@
-import Pages.RegistrationPage;
+
 import org.junit.jupiter.api.Test;
+import page.objects.RegistrationPage;
 
 import static utils.RandomUtils.*;
 
