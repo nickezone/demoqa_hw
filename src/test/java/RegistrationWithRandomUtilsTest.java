@@ -1,18 +1,26 @@
-import org.junit.jupiter.api.Test;
 import Pages.RegistrationPage;
+import org.junit.jupiter.api.Test;
 
-public class DemoqaHWTests extends TestBase {
+import static utils.RandomUtils.*;
+
+public class RegistrationWithRandomUtilsTest extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
+    String[] genders = {"Male", "Female", "Other"};
 
     @Test
     void successFillTest() {
 
+        String userName = getRandomString(10),
+                userLastName = getRandomString(10),
+                userEmail = getRandomEmail(),
+                userGender = getRandomItemFromArray(genders);
+
         registrationPage.openPage()
-                .setFirstName("Alex")
-                .setLastName("Egorov")
+                .setFirstName(userName)
+                .setLastName(userLastName)
                 .setGender("Male")
-                .setEmail("alex@egorov.com")
+                .setEmail(userEmail)
                 .setPhoneNumber("0123456789")
                 .setBirthDate("29", "May", "2001")
                 .setSubject("Maths")

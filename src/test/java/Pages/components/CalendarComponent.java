@@ -1,6 +1,4 @@
-package Pages.Components;
-
-import java.awt.*;
+package Pages.components;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;

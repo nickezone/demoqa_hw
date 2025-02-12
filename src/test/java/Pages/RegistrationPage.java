@@ -1,7 +1,7 @@
 package Pages;
 
-import Pages.Components.CalendarComponent;
-import Pages.Components.RegistrationResultModal;
+import Pages.components.CalendarComponent;
+import Pages.components.RegistrationResultModal;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 
@@ -23,11 +23,11 @@ public class RegistrationPage {
             phoneInput = $("#userNumber"),
             birthDateInput = $("#dateOfBirthInput"),
             subjectInput = $("#subjectsInput"),
-            hobbySelector = $("#hobbiesWrapper"),
+            hobbyField = $("#hobbiesWrapper"),
             uploadPictureButton = $("#uploadPicture"),
-            valueInput = $("#currentAddress"),
-            stateSelector = $("#state"),
-            citySelector = $("#city"),
+            addressInput = $("#currentAddress"),
+            stateDropDown = $("#state"),
+            cityDropDown = $("#city"),
             submitButton = $("#submit");
 
     public RegistrationPage openPage() {
@@ -45,8 +45,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setLastName() {
-        lastNameInput.setValue("Egorov");
+    public RegistrationPage setLastName(String value) {
+        lastNameInput.setValue(value);
 
         return this;
     }
@@ -76,7 +76,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setHobby(String value) {
-        hobbySelector.$(byText(value)).click();
+        hobbyField.$(byText(value)).click();
 
         return this;
     }
@@ -88,7 +88,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setAddress(String value) {
-        valueInput.setValue(value);
+        addressInput.setValue(value);
 
         return this;
     }
@@ -101,14 +101,14 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setState(String value) {
-        stateSelector.click();
+        stateDropDown.click();
         $("#stateCity-wrapper").$(byText(value)).click();
 
         return this;
     }
 
     public RegistrationPage setCity(Integer value) {
-        citySelector.click();
+        cityDropDown.click();
         $("#react-select-4-option-" + value).click(); // value could be between 0 and 2
 
         return this;

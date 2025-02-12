@@ -1,4 +1,4 @@
-package Pages.Components;
+package Pages.components;
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
