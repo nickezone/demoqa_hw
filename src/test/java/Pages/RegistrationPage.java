@@ -17,9 +17,20 @@ public class RegistrationPage {
     private final static String TITLE_TEXT = "Student Registration Form";
     private final SelenideElement
             firstNameInput = $("#firstName"),
-            lastNameInput = $("#lastName");
+            lastNameInput = $("#lastName"),
+            emailInput = $("#userEmail"),
+            genderSelector = $("#genterWrapper"),
+            phoneInput = $("#userNumber"),
+            birthDateInput = $("#dateOfBirthInput"),
+            subjectInput = $("#subjectsInput"),
+            hobbySelector = $("#hobbiesWrapper"),
+            uploadPictureButton = $("#uploadPicture"),
+            valueInput = $("#currentAddress"),
+            stateSelector = $("#state"),
+            citySelector = $("#city"),
+            submitButton = $("#submit");
 
-    public RegistrationPage openPage(){
+    public RegistrationPage openPage() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text(TITLE_TEXT));
         Selenide.executeJavaScript("$('#fixedban').remove()");
@@ -28,33 +39,89 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setFirstName (String value) {
+    public RegistrationPage setFirstName(String value) {
         firstNameInput.setValue(value);
 
         return this;
     }
 
-    public RegistrationPage setLastName () {
+    public RegistrationPage setLastName() {
         lastNameInput.setValue("Egorov");
 
         return this;
     }
 
+    public RegistrationPage setEmail(String value) {
+        emailInput.setValue(value);
+
+        return this;
+    }
+
+    public RegistrationPage setPhoneNumber(String value) {
+        phoneInput.setValue(value);
+
+        return this;
+    }
+
     public RegistrationPage setGender(String value) {
-        $("#genterWrapper").$(byText(value)).click(); // todo move to selenide elements
+        genderSelector.$(byText(value)).click();
+
+        return this;
+    }
+
+    public RegistrationPage setSubject(String value) {
+        subjectInput.setValue(value).pressEnter();
+
+        return this;
+    }
+
+    public RegistrationPage setHobby(String value) {
+        hobbySelector.$(byText(value)).click();
+
+        return this;
+    }
+
+    public RegistrationPage selectPicture(String value) {
+        uploadPictureButton.uploadFromClasspath(value);
+
+        return this;
+    }
+
+    public RegistrationPage setAddress(String value) {
+        valueInput.setValue(value);
 
         return this;
     }
 
     public RegistrationPage setBirthDate(String day, String month, String year) {
-        $("#dateOfBirthInput").click();
+        birthDateInput.click();
         calendarComponent.setDate(day, month, year);
 
         return this;
     }
 
+    public RegistrationPage setState(String value) {
+        stateSelector.click();
+        $("#stateCity-wrapper").$(byText(value)).click();
+
+        return this;
+    }
+
+    public RegistrationPage setCity(Integer value) {
+        citySelector.click();
+        $("#react-select-4-option-" + value).click(); // value could be between 0 and 2
+
+        return this;
+    }
+
+    public RegistrationPage clickSubmitButton() {
+        submitButton.click();
+
+        return this;
+    }
+
     public RegistrationPage verifyResultModalAppears() {
-        registrationResultModal.veriftModalAppears();
+        registrationResultModal.verifyModalAppears();
 
         return this;
     }
