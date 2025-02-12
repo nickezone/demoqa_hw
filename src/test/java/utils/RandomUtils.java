@@ -11,7 +11,6 @@ public class RandomUtils {
         System.out.println(getRandomEmail());
 
         String[] names = {"a", "b", "c", "d", "e"};
-        String[] genders = {"Male", "Female", "Other"};
         System.out.println(getRandomItemFromArray(names));
     }
 

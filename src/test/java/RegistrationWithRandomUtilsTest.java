@@ -19,7 +19,7 @@ public class RegistrationWithRandomUtilsTest extends TestBase {
         registrationPage.openPage()
                 .setFirstName(userName)
                 .setLastName(userLastName)
-                .setGender("Male")
+                .setGender(userGender)
                 .setEmail(userEmail)
                 .setPhoneNumber("0123456789")
                 .setBirthDate("29", "May", "2001")

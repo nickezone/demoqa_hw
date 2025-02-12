@@ -9,7 +9,11 @@ import static utils.RandomUtils.*;
 public class RegistrationWithRandomFakerTest extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
-    String[] genders = {"Male", "Female", "Other"};
+    String[] genders = {"Male", "Female", "Other"},
+    subjects = {"Maths", "Chemistry", "Physics", "Arts", "Social Studies"},
+    hobbies = {"Sport", "Reading", "Music"},
+    states = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"},
+    months = {"May", "July", "March"};
 
     @Test
     void successFillTest() {
@@ -21,9 +25,13 @@ public class RegistrationWithRandomFakerTest extends TestBase {
                 userEmail = faker.internet().emailAddress(),
                 userGender = getRandomItemFromArray(genders),
                 userAddress = faker.address().fullAddress(),
-                userPhone = faker.phoneNumber().subscriberNumber(10);
-        //   randomDay = faker.number.numberBetween(); // todo задать вопрос как поступить в такой ситуации
-
+                userPhone = faker.phoneNumber().subscriberNumber(10),
+                userSubject = getRandomItemFromArray(subjects),
+                userHobby = getRandomItemFromArray(hobbies),
+                userState = getRandomItemFromArray(states),
+                randomDay = Integer.toString(faker.number().numberBetween(1, 29)),
+                randomMonth = Integer.toString(faker.number().numberBetween(0, 11)),
+                randomYear = String.valueOf(faker.number().numberBetween(1900, 2024));
 
         int userCity = getRandomInt(0, 2);
 
@@ -33,18 +41,18 @@ public class RegistrationWithRandomFakerTest extends TestBase {
                 .setGender(userGender)
                 .setEmail(userEmail)
                 .setPhoneNumber(userPhone)
-                .setBirthDate("29", "May", "2001")
-                .setSubject("Maths")
-                .setHobby("Sports")
+                .setBirthDate(randomDay, randomMonth, randomYear)
+                .setSubject(userSubject)
+                .setHobby(userHobby)
                 .selectPicture("img/1.png")
                 .setAddress(userAddress)
-                .setState("NCR")
+                .setState(userState)
                 .setCity(userCity)
                 .clickSubmitButton();
 
 
         registrationPage.verifyResultModalAppears()
-                .verifyResult("Student Name", "Alex " + "Egorov")
-                .verifyResult("Gender", "Male");
+                .verifyResult("Student Name", userName + " " + userLastName)
+                .verifyResult("Gender", userGender);
     }
 }
