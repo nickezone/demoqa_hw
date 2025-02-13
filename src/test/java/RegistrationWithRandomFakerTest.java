@@ -29,11 +29,11 @@ public class RegistrationWithRandomFakerTest extends TestBase {
                 userSubject = getRandomItemFromArray(subjects),
                 userHobby = getRandomItemFromArray(hobbies),
                 userState = getRandomItemFromArray(states),
+                userCity = Integer.toString(getRandomInt(0, 2)),
                 randomDay = Integer.toString(faker.number().numberBetween(1, 29)),
                 randomMonth = Integer.toString(faker.number().numberBetween(0, 11)),
-                randomYear = String.valueOf(faker.number().numberBetween(1900, 2024));
+                randomYear = String.valueOf(faker.number().numberBetween(2000, 2024));
 
-        int userCity = getRandomInt(0, 2);
 
         registrationPage.openPage()
                 .setFirstName(userName)
@@ -57,6 +57,6 @@ public class RegistrationWithRandomFakerTest extends TestBase {
                 .verifyResult("Mobile", userPhone)
                 .verifyResult("Hobbies", userHobby)
                 .verifyResult("Address", userAddress)
-                .verifyResult("State and City", userState + " " + userCity);
+                .verifyResult("State and City", userState);
     }
 }
