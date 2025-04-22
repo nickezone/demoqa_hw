@@ -34,6 +34,7 @@ public class RegistrationPage {
         Selenide.executeJavaScript("$('#fixedban').remove()");
         Selenide.executeJavaScript("$('footer').remove()");
 
+
         return this;
     }
 
@@ -128,5 +129,6 @@ public class RegistrationPage {
         registrationResultModal.verifyResult(key, value);
         return this;
     }
+
 
 }
